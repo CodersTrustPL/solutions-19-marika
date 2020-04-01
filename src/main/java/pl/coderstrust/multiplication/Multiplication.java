@@ -13,10 +13,8 @@ public class Multiplication {
         multiplicationTable.append("\n");
         for(int i = 1; i<=size; i++) {
             multiplicationTable.append(i).append("\t");
-            int counter = 1;
-            while(counter<=size) {
-                multiplicationTable.append(i * counter).append("\t");
-                counter++;
+            for(int j = 1; j<=size; j++) {
+                multiplicationTable.append(j * i).append("\t");
             }
             multiplicationTable.append("\n");
         }
