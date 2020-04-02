@@ -5,6 +5,7 @@ public class Multiplication {
         int size = 10;
         printMultiplicationTable(size);
     }
+    
     public static void printMultiplicationTable(int size) {
         StringBuilder multiplicationTable = new StringBuilder();
         for(int i = 1; i <= size; i++) {
