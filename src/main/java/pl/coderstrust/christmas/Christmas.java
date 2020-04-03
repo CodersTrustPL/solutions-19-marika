@@ -8,25 +8,19 @@ public class Christmas {
 
     public static void printChristmasTree(int height) {
         StringBuilder christmasTree = new StringBuilder("\n");
-        int starWidthCounter = 1;
-        for(int i = 1; i <= height; i++) {
-            int emptySpaceWidthCounter = height - i;
-            for(int j = 1; j <= emptySpaceWidthCounter; j++) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < (height - i); j++) {
                 christmasTree.append(" ");
             }
-            for(int j = 1; j <= starWidthCounter; j++) {
+            for (int j = 1; j <= (2 * i + 1); j++) {
                 christmasTree.append("*");
             }
             christmasTree.append("\n");
-            starWidthCounter += 2;
         }
-        int halfStarWidth = (starWidthCounter - 2) / 2 - 1;
-        for(int j = 1; j <= starWidthCounter; j++) {
+        for (int i = 1; i < height; i++) {
             christmasTree.append(" ");
-            if(j == halfStarWidth) {
-                christmasTree.append("**");
-            }
         }
+        christmasTree.append("**");
         System.out.println(christmasTree);
     }
 }
