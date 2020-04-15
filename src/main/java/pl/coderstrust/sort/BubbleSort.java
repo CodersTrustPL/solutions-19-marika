@@ -2,6 +2,9 @@ package pl.coderstrust.sort;
 
 import java.util.Arrays;
 
+import static pl.coderstrust.sort.Helper.swap;
+
+
 public class BubbleSort {
 
     public static void main(String[] args) {
@@ -14,7 +17,7 @@ public class BubbleSort {
         for (int i = arrayLength; i > 0; i--) {
             for (int j = arrayLength; j > 0; j--) {
                 if (array[j] < array[j - 1]) {
-                    Helper.swap(array, j - 1, j);
+                    swap(array, j - 1, j);
                 }
             }
         }

@@ -2,6 +2,8 @@ package pl.coderstrust.sort;
 
 import java.util.Arrays;
 
+import static pl.coderstrust.sort.Helper.swap;
+
 public class SelectionSort {
 
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class SelectionSort {
         int arrayLength = array.length;
         for (int i = 0; i < arrayLength - 1; i++) {
             int indexOfMinimalElementInArrayRange = findIndexOfMinimalElementInArrayRange(array, arrayLength, i);
-            Helper.swap(array, i, indexOfMinimalElementInArrayRange);
+            swap(array, i, indexOfMinimalElementInArrayRange);
         }
         return array;
     }
