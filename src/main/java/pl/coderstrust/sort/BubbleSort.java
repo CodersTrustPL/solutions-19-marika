@@ -5,25 +5,19 @@ import java.util.Arrays;
 public class BubbleSort {
 
     public static void main(String[] args) {
-        int[] data = {10, 2, 30, 100, 50, 6, 71, 80, 9, 91};
-        System.out.println(Arrays.toString(sortArray(data)));
+        int[] array = {10, 2, 30, 100, 50, 6, 71, 80, 9, 91};
+        System.out.println(Arrays.toString(sort(array)));
     }
 
-    public static int[] sortArray(int[] array) {
-        int[] sortedArray = array;
-        return sort(sortedArray);
-    }
-
-    private static int[] sort(int[] sortedArray) {
-        for (int i = sortedArray.length - 1; i > 0; i--) {
-            for (int j = sortedArray.length - 1; j > 0; j--) {
-                if (sortedArray[j] < sortedArray[j - 1]) {
-                    int temp = sortedArray[j];
-                    sortedArray[j] = sortedArray[j - 1];
-                    sortedArray[j - 1] = temp;
+    public static int[] sort(int[] array) {
+        int arrayLength = array.length - 1;
+        for (int i = arrayLength; i > 0; i--) {
+            for (int j = arrayLength; j > 0; j--) {
+                if (array[j] < array[j - 1]) {
+                    Helper.swap(array, j - 1, j);
                 }
             }
         }
-        return sortedArray;
+        return array;
     }
 }
