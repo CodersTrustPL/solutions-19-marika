@@ -6,15 +6,16 @@ public class SelectionSort {
 
     public static void main(String[] args) {
         int[] data = {10, 2, 30, 100, 50, 6, 71, 80, 9, 91};
-        System.out.println(Arrays.toString(sortArray(data)));
+        System.out.println(Arrays.toString(sort(data)));
     }
 
-    public static int[] sortArray(int[] array) {
+    public static int[] sort(int[] array) {
         int[] sortedArray = array;
-        return sort(sortedArray);
+        findIndexOfMinimalElementInArrayRange(sortedArray);
+        return sortedArray;
     }
 
-    private static int[] sort(int[] sortedArray) {
+    private static void findIndexOfMinimalElementInArrayRange(int[] sortedArray) {
         for (int i = 0; i < sortedArray.length - 1; i++) {
             int temp = i;
             for (int j = i + 1; j < sortedArray.length; j++) {
@@ -22,10 +23,13 @@ public class SelectionSort {
                     temp = j;
                 }
             }
-            int smallerElement = sortedArray[temp];
-            sortedArray[temp] = sortedArray[i];
-            sortedArray[i]= smallerElement;
+            swap(sortedArray, temp, i);
         }
-        return sortedArray;
+    }
+
+    private static void swap(int[] sortedArray, int temp, int i) {
+        int smallerElement = sortedArray[temp];
+        sortedArray[temp] = sortedArray[i];
+        sortedArray[i] = smallerElement;
     }
 }
