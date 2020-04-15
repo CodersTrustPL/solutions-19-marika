@@ -6,20 +6,25 @@ public class SelectionSort {
 
     public static void main(String[] args) {
         int[] data = {10, 2, 30, 100, 50, 6, 71, 80, 9, 91};
-        System.out.println(Arrays.toString(sort(data)));
+        System.out.println(Arrays.toString(sortArray(data)));
     }
 
-    public static int[] sort(int[] array) {
+    public static int[] sortArray(int[] array) {
         int[] sortedArray = array;
-        for (int i = 1; i < sortedArray.length; i++) {
-            int j, temp;
-            temp = sortedArray[i];
-            j = i - 1;
-            while (j >= 0 && sortedArray[j] > temp) {
-                sortedArray[j + 1] = sortedArray[j];
-                j = j - 1;
+        return sort(sortedArray);
+    }
+
+    private static int[] sort(int[] sortedArray) {
+        for (int i = 0; i < sortedArray.length - 1; i++) {
+            int temp = i;
+            for (int j = i + 1; j < sortedArray.length; j++) {
+                if (sortedArray[j] < sortedArray[temp]) {
+                    temp = j;
+                }
             }
-            sortedArray[j + 1] = temp;
+            int smallerElement = sortedArray[temp];
+            sortedArray[temp] = sortedArray[i];
+            sortedArray[i]= smallerElement;
         }
         return sortedArray;
     }
