@@ -5,58 +5,52 @@ import java.util.Arrays;
 public class SieveOfEratosthenes {
 
     public static void main(String[] args) {
-        int maximumNumber = 12;
+        int maximumNumber = 16;
         int[] primeNumbersArray = sieve(maximumNumber);
         System.out.println(Arrays.toString(primeNumbersArray));
     }
 
     public static int[] sieve(int maximumNumber) {
-        int[] array = initialiseArrayWithDefaultValues(maximumNumber);
-        boolean[] booleansArray = markNotPrimeNumbersAsFalse(maximumNumber);
-        int primeNumbersCounter = countPrimeNumbers(booleansArray);
-        int[] primeArray = movePrimeNumbersToFinalList(array, booleansArray, primeNumbersCounter);
-        return primeArray;
+        boolean[] arrayWithPrimeNumbersMarkedAsTrue = initialiseArrayWithDefaultValues(maximumNumber);
+        markNotPrimeNumbersAsFalse(arrayWithPrimeNumbersMarkedAsTrue);
+        int primeNumbersCounter = countPrimeNumbers(arrayWithPrimeNumbersMarkedAsTrue);
+        return movePrimeNumbersToFinalList(arrayWithPrimeNumbersMarkedAsTrue, primeNumbersCounter);
     }
 
-    public static int[] initialiseArrayWithDefaultValues(int maximumNumber) {
-        int[] array = new int[maximumNumber];
-        for (int i = 0; i < maximumNumber; i++) {
-            array[i] = i + 1;
+    public static boolean[] initialiseArrayWithDefaultValues(int maximumNumber) {
+        boolean[] arrayWithPrimeNumbersMarkedAsTrue = new boolean[maximumNumber];
+        for (int i = 1; i < maximumNumber; i++) {
+            arrayWithPrimeNumbersMarkedAsTrue[i] = true;
         }
-        return array;
+        return arrayWithPrimeNumbersMarkedAsTrue;
     }
 
-    public static boolean[] markNotPrimeNumbersAsFalse(int maximumNumber) {
-        boolean[] array = new boolean[maximumNumber];
-        for (int i = 0; i < maximumNumber; i++) {
-            array[i] = true;
-        }
-        for (int p = 2; p * p < array.length; p++) {
-            if (array[p] == true) {
-                for (int i = p * p; i < array.length; i += p)
-                    array[i] = false;
+    public static void markNotPrimeNumbersAsFalse(boolean[] arrayWithPrimeNumbersMarkedAsTrue) {
+        for (int i = 2; i * i < arrayWithPrimeNumbersMarkedAsTrue.length; i++) {
+            if (arrayWithPrimeNumbersMarkedAsTrue[i]) {
+                for (int j = i * i; j < arrayWithPrimeNumbersMarkedAsTrue.length; j += i)
+                    arrayWithPrimeNumbersMarkedAsTrue[j] = false;
             }
         }
-        return array;
     }
 
-    public static int countPrimeNumbers(boolean[] array) {
+    public static int countPrimeNumbers(boolean[] arrayWithPrimeNumbersMarkedAsTrue) {
         int primeNumbersAmount = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i]) {
-                primeNumbersAmount += 1;
+        for (boolean item : arrayWithPrimeNumbersMarkedAsTrue) {
+            if (item) {
+                primeNumbersAmount++;
             }
         }
         return primeNumbersAmount;
     }
 
-    public static int[] movePrimeNumbersToFinalList(int[] array, boolean[] primeNumbersArray, int primeNumbersCounter) {
+    public static int[] movePrimeNumbersToFinalList(boolean[] arrayWithPrimeNumbersMarkedAsTrue, int primeNumbersCounter) {
         int[] primeArray = new int[primeNumbersCounter];
-        int count = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (primeNumbersArray[i] == true) {
-                primeArray[count] = array[i];
-                count += 1;
+
+        int indexInArray = 0;
+        for (int i = 1; i < arrayWithPrimeNumbersMarkedAsTrue.length; i++) {
+            if (arrayWithPrimeNumbersMarkedAsTrue[i]) {
+                primeArray[indexInArray++] = i;
             }
         }
         return primeArray;
