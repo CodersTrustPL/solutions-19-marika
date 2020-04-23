@@ -9,7 +9,9 @@ public class Multiplication {
     }
 
     private static void throwExceptionIfSizeIsSmallerThanOne(int size) {
-        throw new IllegalArgumentException("The value must be greater than 0!");
+        if (size < 1) {
+            throw new IllegalArgumentException("The value must be greater than 0! Provided value was: " + size);
+        }
     }
 
     public static int[][] createMultiplicationArray(int size) {
@@ -27,21 +29,18 @@ public class Multiplication {
     }
 
     public static void printMultiplicationTable(int size, int[][] multiplicationTable) {
-        if (size < 1) {
-            throwExceptionIfSizeIsSmallerThanOne(size);
-        } else {
-            for (int[] row : multiplicationTable) {
-                for (int item : row) {
-                    if (item == 0) {
-                        System.out.print("    ");
-                    } else if (item < 10) {
-                        System.out.print(item + "   ");
-                    } else {
-                        System.out.print(item + "  ");
-                    }
+        throwExceptionIfSizeIsSmallerThanOne(size);
+        for (int[] row : multiplicationTable) {
+            for (int item : row) {
+                if (item == 0) {
+                    System.out.print("    ");
+                } else if (item < 10) {
+                    System.out.print(item + "   ");
+                } else {
+                    System.out.print(item + "  ");
                 }
-                System.out.println();
             }
+            System.out.println();
         }
     }
 }
