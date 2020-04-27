@@ -8,7 +8,7 @@ public class Christmas {
     public static void main(String[] args) {
         int height = 5;
         List<String> christmasTree = createChristmasTree(height);
-        printChristmasTree(height, christmasTree);
+        printChristmasTree(christmasTree);
     }
 
     private static void throwExceptionIfHeightIsSmallerThanOne(int height) {
@@ -18,6 +18,7 @@ public class Christmas {
     }
 
     public static List<String> createChristmasTree(int height) {
+        throwExceptionIfHeightIsSmallerThanOne(height);
         List<String> christmasTree = new ArrayList<>();
         for (int i = 0; i < height; i++) {
             StringBuilder treeElement = new StringBuilder();
@@ -39,8 +40,7 @@ public class Christmas {
         return christmasTree;
     }
 
-    public static void printChristmasTree(int height, List<String> christmasTree) {
-        throwExceptionIfHeightIsSmallerThanOne(height);
+    public static void printChristmasTree(List<String> christmasTree) {
         for (int i = 0; i < christmasTree.size(); i++) {
             System.out.println(christmasTree.get(i));
         }
