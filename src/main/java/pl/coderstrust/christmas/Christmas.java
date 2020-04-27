@@ -20,8 +20,8 @@ public class Christmas {
     public static List<String> createChristmasTree(int height) {
         throwExceptionIfHeightIsSmallerThanOne(height);
         List<String> christmasTree = new ArrayList<>();
+        StringBuilder treeElement = new StringBuilder();
         for (int i = 0; i < height; i++) {
-            StringBuilder treeElement = new StringBuilder();
             for (int j = 0; j < (height - i); j++) {
                 treeElement.append(" ");
             }
@@ -29,14 +29,13 @@ public class Christmas {
                 treeElement.append("*");
             }
             christmasTree.add(treeElement.toString());
+            treeElement.setLength(0);
         }
-        StringBuilder treeElement = new StringBuilder();
         for (int i = 1; i < height; i++) {
             treeElement.append(" ");
         }
         treeElement.append("**");
         christmasTree.add(treeElement.toString());
-        System.out.println(christmasTree);
         return christmasTree;
     }
 
