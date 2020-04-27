@@ -1,22 +1,45 @@
 package pl.coderstrust.pascal;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PascalTriangle {
+
     public static void main(String[] args) {
-        int height = 7;
-        printPascalTriangle(height);
+        int height = 2;
+        List<String> pascalTriangle = createPascalTriangle(height);
+        printPascalTriangle(pascalTriangle);
     }
 
-    public static void printPascalTriangle(int height) {
+    public static List<String> createPascalTriangle(int height) {
+        throwExceptionIfHeightIsSmallerThanOne(height);
+        List<String> pascalTriangle = new ArrayList<>();
+        StringBuilder pascalElement = new StringBuilder();
         int number;
         for (int i = 0; i < height; i++) {
             for (int j = i; j < height; j++) {
-                System.out.printf("%2s", "");
+                pascalElement.append(String.format("%2s", ""));
             }
             for (int j = 0; j <= i; j++) {
                 number = factorial(i) / (factorial(j) * factorial(i - j));
-                System.out.printf("%4d", number);
+                pascalElement.append(String.format("%4s", number));
             }
-            System.out.println();
+            pascalTriangle.add(pascalElement.toString());
+            pascalElement.setLength(0);
+        }
+        System.out.println(pascalTriangle);
+        return pascalTriangle;
+    }
+
+    public static void printPascalTriangle(List<String> pascalTriangle) {
+        for (int i = 0; i < pascalTriangle.size(); i++) {
+            System.out.println(pascalTriangle.get(i));
+        }
+    }
+
+    private static void throwExceptionIfHeightIsSmallerThanOne(int height) {
+        if (height < 1) {
+            throw new IllegalArgumentException("The value must be greater than 0! Provided value was: " + height);
         }
     }
 
