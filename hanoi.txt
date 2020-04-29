@@ -1,0 +1,28 @@
+Move disk: 3 from: pillar A to: pillar C
+[pillar A, 1, 2]
+[pillar B]
+[pillar C, 3]
+Move disk: 2 from: pillar A to: pillar B
+[pillar A, 1]
+[pillar C, 3]
+[pillar B, 2]
+Move disk: 3 from: pillar C to: pillar B
+[pillar C]
+[pillar A, 1]
+[pillar B, 2, 3]
+Move disk: 1 from: pillar A to: pillar C
+[pillar A]
+[pillar B, 2, 3]
+[pillar C, 1]
+Move disk: 3 from: pillar B to: pillar A
+[pillar B, 2]
+[pillar C, 1]
+[pillar A, 3]
+Move disk: 2 from: pillar B to: pillar C
+[pillar B]
+[pillar A, 3]
+[pillar C, 1, 2]
+Move disk: 3 from: pillar A to: pillar C
+[pillar A]
+[pillar B]
+[pillar C, 1, 2, 3]
