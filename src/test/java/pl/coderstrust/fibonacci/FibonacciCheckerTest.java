@@ -28,7 +28,8 @@ class FibonacciCheckerTest {
 
     @ParameterizedTest
     @MethodSource("randomNumbers")
-    void shouldReturnFalseForAllRandomNumbers(long actualValue) throws IOException {
+    void shouldReturnFalseForAllRandomNumbers(long actualValue) throws IOException, InterruptedException {
+        Thread.sleep(250);
         assertFalse(FibonacciChecker.isFibonacciNumber(actualValue));
     }
 
@@ -38,13 +39,18 @@ class FibonacciCheckerTest {
         for (int i = 0; i < 1000000; i++) {
             randomNumbers.add(randomGenerator.nextLong());
         }
+        Set<Long> fibonacciNumbers = fibonacciNumbers();
+        randomNumbers.removeAll(fibonacciNumbers);
+        return randomNumbers.stream();
+    }
+
+    private static Set<Long> fibonacciNumbers() throws IOException {
         List<String> fibonacciList = Files.readAllLines(Paths.get("src/test/resources/fibonacci.csv"),
                 StandardCharsets.UTF_8);
         Set<Long> fibonacciNumbers = new HashSet<>();
         for(String item: fibonacciList) {
             fibonacciNumbers.add(Long.parseLong(item));
         }
-        randomNumbers.removeAll(fibonacciNumbers);
-        return randomNumbers.stream();
+        return fibonacciNumbers;
     }
 }
