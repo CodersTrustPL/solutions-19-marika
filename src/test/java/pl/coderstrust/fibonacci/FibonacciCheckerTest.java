@@ -11,7 +11,6 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static pl.coderstrust.fibonacci.FibonacciChecker.fibonacciNumbersGenerator;
 
 class FibonacciCheckerTest {
 
@@ -34,7 +33,7 @@ class FibonacciCheckerTest {
         for (int i = 0; i < 1000000; i++) {
             randomNumbers.add(randomGenerator.nextLong());
         }
-        Set<Long> fibonacciNumbers = fibonacciNumbersGenerator();
+        Set<Long> fibonacciNumbers = FibonacciChecker.fibonacciNumbers;
         randomNumbers.removeAll(fibonacciNumbers);
         return randomNumbers.stream();
     }
