@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class FibonacciCheckerTest {
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/fibonacci.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/fibonacci.csv")
     void shouldReturnsTrueForEachNumberFromFibonacciSet(String input) {
         long actualValue = Long.parseLong(input);
         assertTrue(FibonacciChecker.isFibonacciNumber(actualValue));
@@ -33,7 +33,7 @@ class FibonacciCheckerTest {
         for (int i = 0; i < 1000000; i++) {
             randomNumbers.add(randomGenerator.nextLong());
         }
-        Set<Long> fibonacciNumbers = FibonacciChecker.fibonacciNumbers;
+        Set<Long> fibonacciNumbers = FibonacciNumbersGenerator.generateFibonacciNumbers();
         randomNumbers.removeAll(fibonacciNumbers);
         return randomNumbers.stream();
     }
