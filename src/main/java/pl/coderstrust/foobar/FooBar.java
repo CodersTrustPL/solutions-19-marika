@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FooBar {
+
   public static void main(String[] args) {
     int number = 15;
     List<String> result = createFooBarArray(number);

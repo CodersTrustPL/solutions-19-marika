@@ -2,7 +2,6 @@ package pl.coderstrust.sort;
 
 import static pl.coderstrust.sort.Helper.swap;
 
-
 import java.util.Arrays;
 
 public class SelectionSort {
