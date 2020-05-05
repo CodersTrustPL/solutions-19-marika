@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pl.coderstrust.christmas.Christmas.createChristmasTree;
 
-
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,7 @@ class ChristmasTest {
 
   @Test
   public void shouldCreateChristmasTreeWhenHeightIsTwo() {
-    //given
+    // given
     int height = 2;
     String expected = Arrays.asList(
         "  *",
@@ -21,16 +20,16 @@ class ChristmasTest {
         " **"
     ).toString();
 
-    //when
+    // when
     String result = createChristmasTree(height).toString();
 
-    //then
+    // then
     assertEquals(expected, result);
   }
 
   @Test
   public void shouldCreateChristmasTreeWhenHeightIsFive() {
-    //given
+    // given
     int height = 5;
     String expected = Arrays.asList(
         "     *",
@@ -41,16 +40,16 @@ class ChristmasTest {
         "    **"
     ).toString();
 
-    //when
+    // when
     String result = createChristmasTree(height).toString();
 
-    //then
+    // then
     assertEquals(expected, result);
   }
 
   @Test
   public void shouldCreateChristmasTreeWhenHeightIsTen() {
-    //given
+    // given
     int height = 10;
     String expected = Arrays.asList(
         "          *",
@@ -66,25 +65,23 @@ class ChristmasTest {
         "         **"
     ).toString();
 
-    //when
+    // when
     String result = createChristmasTree(height).toString();
 
-    //then
+    // then
     assertEquals(expected, result);
   }
 
   @Test
   public void shouldCheckTfThrowExceptionWhenHeightIsSmallerThanOne() {
-    //given
+    // given
     int height = -1;
     String expected = "The value must be greater than 0!";
 
-    //when
-    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-      createChristmasTree(height);
-    });
+    // when
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> createChristmasTree(height));
 
-    //then
+    // then
     String result = exception.getMessage();
     assertTrue(result.contains(expected));
   }

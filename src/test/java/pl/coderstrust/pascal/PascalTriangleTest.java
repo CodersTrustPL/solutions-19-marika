@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pl.coderstrust.pascal.PascalTriangle.createPascalTriangle;
 
-
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
@@ -13,23 +12,23 @@ class PascalTriangleTest {
 
   @Test
   public void shouldCreatePascalTriangleWhenHeightIsTwo() {
-    //given
+    // given
     int height = 2;
     String expected = Arrays.asList(
         "       1",
         "     1   1"
     ).toString();
 
-    //when
+    // when
     String result = createPascalTriangle(height).toString();
 
-    //then
+    // then
     assertEquals(result, expected);
   }
 
   @Test
   public void shouldCreatePascalTriangleWhenHeightIsFive() {
-    //given
+    // given
     int height = 5;
     String expected = Arrays.asList(
         "             1",
@@ -39,16 +38,16 @@ class PascalTriangleTest {
         "     1   4   6   4   1"
     ).toString();
 
-    //when
+    // when
     String result = createPascalTriangle(height).toString();
 
-    //then
+    // then
     assertEquals(result, expected);
   }
 
   @Test
   public void shouldCreatePascalTriangleWhenHeightIsTen() {
-    //given
+    // given
     int height = 10;
     String expected = Arrays.asList(
         "                       1",
@@ -63,25 +62,23 @@ class PascalTriangleTest {
         "     1   9  36  84 126 126  84  36   9   1"
     ).toString();
 
-    //when
+    // when
     String result = createPascalTriangle(height).toString();
 
-    //then
+    // then
     assertEquals(result, expected);
   }
 
   @Test
   public void shouldCheckTfThrowExceptionWhenHeightIsSmallerThanOne() {
-    //given
+    // given
     int height = -1;
     String expected = "The value must be greater than 0!";
 
-    //when
-    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-      createPascalTriangle(height);
-    });
+    // when
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> createPascalTriangle(height));
 
-    //then
+    // then
     String result = exception.getMessage();
     assertTrue(result.contains(expected));
   }

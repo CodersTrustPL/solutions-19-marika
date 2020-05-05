@@ -7,14 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pl.coderstrust.multiplication.Multiplication.createMultiplicationArray;
 import static pl.coderstrust.multiplication.Multiplication.printMultiplicationTable;
 
-
 import org.junit.jupiter.api.Test;
 
 class MultiplicationTest {
 
   @Test
   public void shouldCheckIfAllValuesAreCorrectWhenTheSizeIsTwo() {
-    //given
+    // given
     int size = 2;
     int[][] expected = {
         {0, 1, 2},
@@ -22,16 +21,16 @@ class MultiplicationTest {
         {2, 2, 4}
     };
 
-    //when
+    // when
     int[][] result = createMultiplicationArray(size);
 
-    //then
+    // then
     assertArrayEquals(expected, result);
   }
 
   @Test
   public void shouldCheckIfAllValuesAreCorrectWhenTheSizeIsFive() {
-    //given
+    // given
     int size = 5;
     int[][] expected = {
         {0, 1, 2, 3, 4, 5},
@@ -42,16 +41,16 @@ class MultiplicationTest {
         {5, 5, 10, 15, 20, 25}
     };
 
-    //when
+    // when
     int[][] result = createMultiplicationArray(size);
 
-    //then
+    // then
     assertArrayEquals(expected, result);
   }
 
   @Test
   public void shouldCheckIfAllValuesAreCorrectWhenTheSizeIsTen() {
-    //given
+    // given
     int size = 10;
     int[][] expected = {
         {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
@@ -67,39 +66,37 @@ class MultiplicationTest {
         {10, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
     };
 
-    //when
+    // when
     int[][] result = createMultiplicationArray(size);
 
-    //then
+    // then
     assertArrayEquals(expected, result);
   }
 
   @Test
   public void shouldCheckIfRandomValueIsCorrect() {
-    //given
+    // given
     int size = 5;
     int expected = 25;
 
-    //when
+    // when
     int result = createMultiplicationArray(size)[5][5];
 
-    //then
+    // then
     assertEquals(expected, result);
   }
 
   @Test
   public void shouldCheckTfThrowExceptionIfSizeIsSmallerThanOne() {
-    //given
+    // given
     int size = -1;
     int[][] multiplicationTable = {{}, {}};
     String expected = "The value must be greater than 0!";
 
-    //when
-    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-      printMultiplicationTable(size, multiplicationTable);
-    });
+    // when
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> printMultiplicationTable(size, multiplicationTable));
 
-    //then
+    // then
     String result = exception.getMessage();
     assertTrue(result.contains(expected));
   }

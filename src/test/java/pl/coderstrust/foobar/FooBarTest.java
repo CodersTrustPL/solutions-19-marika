@@ -2,7 +2,6 @@ package pl.coderstrust.foobar;
 
 import static pl.coderstrust.foobar.FooBar.createFooBarArray;
 
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -14,35 +13,34 @@ class FooBarTest {
   @Test
   public void shouldReturnEmptyList() {
 
-    //given
+    // given
     int number = -1;
     List<String> expected = Collections.emptyList();
 
-    //when
+    // when
     List<String> result = createFooBarArray(number);
 
-    //then
+    // then
     Assertions.assertEquals(expected, result);
   }
 
   @Test
   public void shouldReturnEmptyListTo() {
 
-    //given
+    // given
     int number = 0;
     List<String> expected = Collections.emptyList();
 
-    //when
+    // when
     List<String> result = createFooBarArray(number);
 
-    //then
+    // then
     Assertions.assertEquals(expected, result);
   }
 
   @Test
   public void shouldReturnFiveElementListAsExpected() {
-
-    //given
+    // given
     int number = 5;
     List<String> expected = Arrays.asList(
         "1",
@@ -52,17 +50,17 @@ class FooBarTest {
         "5 Bar"
     );
 
-    //when
+    // when
     List<String> result = createFooBarArray(number);
 
-    //then
+    // then
     Assertions.assertEquals(expected, result);
   }
 
   @Test
   public void shouldReturnFifteenElementListAsExpected() {
 
-    //given
+    // given
     int number = 15;
     List<String> expected = Arrays.asList(
         "1",
@@ -82,10 +80,10 @@ class FooBarTest {
         "15 Foo Bar"
     );
 
-    //when
+    // when
     List<String> result = createFooBarArray(number);
 
-    //then
+    // then
     Assertions.assertEquals(expected, result);
   }
 }
