@@ -26,3 +26,4 @@ Move disk: 3 from: pillar A to: pillar C
 [pillar A]
 [pillar B]
 [pillar C, 1, 2, 3]
+Class transformation time: 0.018678442s for 245 classes or 7.62385387755102E-5s per class

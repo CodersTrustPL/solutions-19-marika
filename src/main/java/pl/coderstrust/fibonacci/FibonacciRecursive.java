@@ -3,7 +3,7 @@ package pl.coderstrust.fibonacci;
 public class FibonacciRecursive {
 
   public static void main(String[] args) {
-    int n = 5;
+    int n = -1;
     System.out.println(fibonacci(n));
   }
 
