@@ -76,7 +76,8 @@ class PascalTriangleTest {
     String expected = "The value must be greater than 0!";
 
     // when
-    Exception exception = assertThrows(IllegalArgumentException.class, () -> createPascalTriangle(height));
+    Exception exception = assertThrows(IllegalArgumentException.class,
+        () -> createPascalTriangle(height));
 
     // then
     String result = exception.getMessage();

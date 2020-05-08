@@ -5,12 +5,6 @@ import java.util.List;
 
 public class PascalTriangle {
 
-  public static void main(String[] args) {
-    int height = 2;
-    List<String> pascalTriangle = createPascalTriangle(height);
-    printPascalTriangle(pascalTriangle);
-  }
-
   public static List<String> createPascalTriangle(int height) {
     throwExceptionIfHeightIsSmallerThanOne(height);
     List<String> pascalTriangle = new ArrayList<>();
@@ -29,12 +23,6 @@ public class PascalTriangle {
     }
     System.out.println(pascalTriangle);
     return pascalTriangle;
-  }
-
-  public static void printPascalTriangle(List<String> pascalTriangle) {
-    for (int i = 0; i < pascalTriangle.size(); i++) {
-      System.out.println(pascalTriangle.get(i));
-    }
   }
 
   private static void throwExceptionIfHeightIsSmallerThanOne(int height) {
