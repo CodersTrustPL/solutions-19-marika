@@ -5,18 +5,6 @@ import java.util.List;
 
 public class Christmas {
 
-  public static void main(String[] args) {
-    int height = 5;
-    List<String> christmasTree = createChristmasTree(height);
-    printChristmasTree(christmasTree);
-  }
-
-  private static void throwExceptionIfHeightIsSmallerThanOne(int height) {
-    if (height < 1) {
-      throw new IllegalArgumentException("The value must be greater than 0! Provided value was: " + height);
-    }
-  }
-
   public static List<String> createChristmasTree(int height) {
     throwExceptionIfHeightIsSmallerThanOne(height);
     List<String> christmasTree = new ArrayList<>();
@@ -39,9 +27,9 @@ public class Christmas {
     return christmasTree;
   }
 
-  public static void printChristmasTree(List<String> christmasTree) {
-    for (int i = 0; i < christmasTree.size(); i++) {
-      System.out.println(christmasTree.get(i));
+  private static void throwExceptionIfHeightIsSmallerThanOne(int height) {
+    if (height < 1) {
+      throw new IllegalArgumentException("The value must be greater than 0! Provided value was: " + height);
     }
   }
 }

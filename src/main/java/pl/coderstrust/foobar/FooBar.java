@@ -5,12 +5,6 @@ import java.util.List;
 
 public class FooBar {
 
-  public static void main(String[] args) {
-    int number = 15;
-    List<String> result = createFooBarArray(number);
-    System.out.println(result);
-  }
-
   public static List<String> createFooBarArray(int number) {
     List<String> result = new ArrayList<>();
     for (int i = 1; i <= number; i++) {
