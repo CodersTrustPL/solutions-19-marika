@@ -2,10 +2,10 @@ package pl.coderstrust.sort;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-
 import org.junit.jupiter.api.Test;
 
 public abstract class SortingTestBase {
+
   public abstract SortingMethod getSortingMethod();
 
   @Test

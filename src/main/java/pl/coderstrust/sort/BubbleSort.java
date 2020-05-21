@@ -13,7 +13,7 @@ public class BubbleSort implements SortingMethod {
     }
   }
 
-  public static void swap(int[] array, int index1, int index2) {
+  private static void swap(int[] array, int index1, int index2) {
     int tmpValue = array[index2];
     array[index2] = array[index1];
     array[index1] = tmpValue;

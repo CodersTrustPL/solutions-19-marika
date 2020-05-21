@@ -10,12 +10,6 @@ public class SelectionSort implements SortingMethod {
     }
   }
 
-  public static void swap(int[] array, int index1, int index2) {
-    int tmpValue = array[index2];
-    array[index2] = array[index1];
-    array[index1] = tmpValue;
-  }
-
   private static int findIndexOfMinimalElementInArrayRange(int[] sortedArray, int arrayLength, int indexOfFirstElementInArrayRange) {
     int indexOfMinimalElementInArrayRange = indexOfFirstElementInArrayRange;
     for (int i = indexOfFirstElementInArrayRange + 1; i < arrayLength; i++) {
@@ -24,5 +18,11 @@ public class SelectionSort implements SortingMethod {
       }
     }
     return indexOfMinimalElementInArrayRange;
+  }
+
+  private static void swap(int[] array, int index1, int index2) {
+    int tmpValue = array[index2];
+    array[index2] = array[index1];
+    array[index1] = tmpValue;
   }
 }
