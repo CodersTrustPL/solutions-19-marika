@@ -1,16 +1,19 @@
 package pl.coderstrust.sort;
 
-import static pl.coderstrust.sort.Helper.swap;
+public class SelectionSort implements SortingMethod {
 
-public class SelectionSort {
-
-  public static int[] sort(int[] array) {
+  public void sort(int[] array) {
     int arrayLength = array.length;
     for (int i = 0; i < arrayLength - 1; i++) {
       int indexOfMinimalElementInArrayRange = findIndexOfMinimalElementInArrayRange(array, arrayLength, i);
       swap(array, i, indexOfMinimalElementInArrayRange);
     }
-    return array;
+  }
+
+  public static void swap(int[] array, int index1, int index2) {
+    int tmpValue = array[index2];
+    array[index2] = array[index1];
+    array[index1] = tmpValue;
   }
 
   private static int findIndexOfMinimalElementInArrayRange(int[] sortedArray, int arrayLength, int indexOfFirstElementInArrayRange) {
