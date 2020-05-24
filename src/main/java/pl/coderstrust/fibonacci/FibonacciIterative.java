@@ -2,11 +2,6 @@ package pl.coderstrust.fibonacci;
 
 public class FibonacciIterative {
 
-  public static void main(String[] args) {
-    int n = 10;
-    System.out.println(fibonacci(n));
-  }
-
   public static long fibonacci(int fibonacciNumberInOrder) {
     long first = 1;
     long second = 1;

@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static pl.coderstrust.multiplication.Multiplication.createMultiplicationArray;
-import static pl.coderstrust.multiplication.Multiplication.printMultiplicationTable;
 
 import org.junit.jupiter.api.Test;
 
@@ -90,11 +89,11 @@ class MultiplicationTest {
   public void shouldCheckTfThrowExceptionIfSizeIsSmallerThanOne() {
     // given
     int size = -1;
-    int[][] multiplicationTable = {{}, {}};
     String expected = "The value must be greater than 0!";
 
     // when
-    Exception exception = assertThrows(IllegalArgumentException.class, () -> printMultiplicationTable(size, multiplicationTable));
+    Exception exception = assertThrows(IllegalArgumentException.class,
+        () -> createMultiplicationArray(size));
 
     // then
     String result = exception.getMessage();

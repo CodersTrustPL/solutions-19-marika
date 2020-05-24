@@ -1,17 +1,8 @@
 package pl.coderstrust.sort;
 
-import static pl.coderstrust.sort.Helper.swap;
+public class BubbleSort implements SortingMethod {
 
-import java.util.Arrays;
-
-public class BubbleSort {
-
-  public static void main(String[] args) {
-    int[] array = {10, 2, 30, 100, 50, 6, 71, 80, 9, 91};
-    System.out.println(Arrays.toString(sort(array)));
-  }
-
-  public static int[] sort(int[] array) {
+  public void sort(int[] array) {
     int arrayLength = array.length - 1;
     for (int i = arrayLength; i > 0; i--) {
       for (int j = arrayLength; j > 0; j--) {
@@ -20,6 +11,11 @@ public class BubbleSort {
         }
       }
     }
-    return array;
+  }
+
+  private static void swap(int[] array, int index1, int index2) {
+    int tmpValue = array[index2];
+    array[index2] = array[index1];
+    array[index1] = tmpValue;
   }
 }
