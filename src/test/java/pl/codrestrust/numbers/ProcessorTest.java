@@ -8,7 +8,7 @@ import static org.mockito.Mockito.when;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -18,20 +18,20 @@ public class ProcessorTest {
   public void shouldProcessProvidedInputFileAndSaveResultToProvidedOutputFile() throws IOException {
     // given
     FileProcessor fileProcessor = mock(FileProcessor.class);
-    when(fileProcessor.readLinesFromFile("numbers.txt")).thenReturn(Arrays.asList("1 2 3"));
+    when(fileProcessor.readLinesFromFile("numbers-input.txt")).thenReturn(Collections.singletonList("1 2 3"));
     NumbersProcessor numbersProcessor = mock(NumbersProcessor.class);
-    when(numbersProcessor.processLine("123")).thenReturn("1+2+3=6");
+    when(numbersProcessor.processLine("1 2 3")).thenReturn("1+2+3=6");
     Processor processor = new Processor(numbersProcessor, fileProcessor);
     List<String> result = new ArrayList<>();
     result.add("1+2+3=6");
 
     // when
-    processor.process("numbers.txt", "num.txt");
+    processor.process("numbers-input.txt", "numbers-output.txt");
 
     // then
-    verify(fileProcessor).readLinesFromFile("numbers.txt");
-    verify(numbersProcessor).processLine("123");
-    verify(fileProcessor).writeLinesToFile(result, "num.txt");
+    verify(fileProcessor).readLinesFromFile("numbers-input.txt");
+    verify(numbersProcessor).processLine("1 2 3");
+    verify(fileProcessor).writeLinesToFile(result, "numbers-output.txt");
   }
 
   @Test
@@ -42,10 +42,10 @@ public class ProcessorTest {
     Processor processor = new Processor(numbersProcessor, fileProcessor);
 
     // when
-    processor.process("numbers.txt", "num.txt");
+    processor.process("numbers-input.txt", "numbers-output.txt");
 
     // then
-    File file = new File("num.txt");
+    File file = new File("numbers-output.txt");
     assertTrue(file.exists());
   }
 }
