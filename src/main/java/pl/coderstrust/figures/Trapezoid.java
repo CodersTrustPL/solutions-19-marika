@@ -2,9 +2,21 @@ package pl.coderstrust.figures;
 
 public class Trapezoid implements Figure {
 
-  double base1 = 10.00;
-  double base2 = 12.00;
-  double height = 4.00;
+  double base1;
+  double base2;
+  double height;
+
+  public Trapezoid() {
+    this.base1 = 10;
+    this.base2 = 12;
+    this.height = 4;
+  }
+
+  public Trapezoid(double base1, double base2, double height) {
+    this.base1 = base1;
+    this.base2 = base2;
+    this.height = height;
+  }
 
   @Override
   public double calculateArea() {

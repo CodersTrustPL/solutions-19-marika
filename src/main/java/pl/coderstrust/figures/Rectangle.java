@@ -2,8 +2,18 @@ package pl.coderstrust.figures;
 
 public class Rectangle implements Figure {
 
-  double length = 10;
-  double width = 5;
+  double length;
+  double width;
+
+  public Rectangle() {
+    this.length = 10;
+    this.width = 5;
+  }
+
+  public Rectangle(double length, double width) {
+    this.length = length;
+    this.width = width;
+  }
 
   @Override
   public double calculateArea() {
