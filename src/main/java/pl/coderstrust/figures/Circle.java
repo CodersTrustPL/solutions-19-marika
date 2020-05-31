@@ -3,6 +3,7 @@ package pl.coderstrust.figures;
 public class Circle implements Figure {
 
   double side;
+  double pi = 3.14;
 
   public Circle() {
     this.side = 10;
@@ -14,6 +15,6 @@ public class Circle implements Figure {
 
   @Override
   public double calculateArea() {
-    return side * side;
+    return pi * side * side;
   }
 }

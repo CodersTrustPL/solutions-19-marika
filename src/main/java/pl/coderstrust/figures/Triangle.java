@@ -2,21 +2,21 @@ package pl.coderstrust.figures;
 
 public class Triangle implements Figure {
 
-  double b = 10;
-  double h = 15;
+  double base;
+  double height;
 
   public Triangle() {
-    this.b = 10;
-    this.h = 15;
+    this.base = 10;
+    this.height = 15;
   }
 
-  public Triangle(double b, double h) {
-    this.b = b;
-    this.h = h;
+  public Triangle(double base, double height) {
+    this.base = base;
+    this.height = height;
   }
 
   @Override
   public double calculateArea() {
-    return (b * h) / 2;
+    return (base * height) / 2;
   }
 }
