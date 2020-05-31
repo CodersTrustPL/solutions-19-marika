@@ -24,7 +24,9 @@ public class FileProcessor {
     FileWriter fileWriter = new FileWriter(resultFileName);
     PrintWriter printWriter = new PrintWriter(fileWriter);
     for (String resultLine : resultLines) {
-      printWriter.println(resultLine);
+      if (resultLine != null) {
+        printWriter.println(resultLine);
+      }
     }
     printWriter.close();
   }
