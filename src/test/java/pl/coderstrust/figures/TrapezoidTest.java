@@ -8,7 +8,7 @@ class TrapezoidTest extends FigureTest {
 
   @Override
   public Figure getFigure() {
-    return new Trapezoid();
+    return new Trapezoid(10, 15, 3);
   }
 
   @Test

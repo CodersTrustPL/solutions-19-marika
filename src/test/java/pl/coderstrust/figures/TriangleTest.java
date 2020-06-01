@@ -8,7 +8,7 @@ class TriangleTest extends FigureTest {
 
   @Override
   public Figure getFigure() {
-    return new Triangle();
+    return new Triangle(10, 5);
   }
 
   @Test

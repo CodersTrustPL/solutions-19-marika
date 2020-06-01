@@ -2,15 +2,9 @@ package pl.coderstrust.figures;
 
 public class Trapezoid implements Figure {
 
-  double base1;
-  double base2;
-  double height;
-
-  public Trapezoid() {
-    this.base1 = 10;
-    this.base2 = 12;
-    this.height = 4;
-  }
+  private double base1;
+  private double base2;
+  private double height;
 
   public Trapezoid(double base1, double base2, double height) {
     this.base1 = base1;

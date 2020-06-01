@@ -2,13 +2,8 @@ package pl.coderstrust.figures;
 
 public class Rectangle implements Figure {
 
-  double length;
-  double width;
-
-  public Rectangle() {
-    this.length = 10;
-    this.width = 5;
-  }
+  private double length;
+  private double width;
 
   public Rectangle(double length, double width) {
     this.length = length;

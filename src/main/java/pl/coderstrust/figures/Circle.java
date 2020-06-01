@@ -2,12 +2,8 @@ package pl.coderstrust.figures;
 
 public class Circle implements Figure {
 
-  double side;
-  double pi = 3.14;
-
-  public Circle() {
-    this.side = 10;
-  }
+  private double side;
+  private double pi = Math.PI;
 
   public Circle(double side) {
     this.side = side;

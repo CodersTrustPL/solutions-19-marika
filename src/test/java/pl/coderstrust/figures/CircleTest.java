@@ -8,14 +8,14 @@ class CircleTest extends FigureTest {
 
   @Override
   public Figure getFigure() {
-    return new Circle();
+    return new Circle(5);
   }
 
   @Test
   void shouldCheckIfMethodReturnsCorrectValue() {
     // given
     double side = 10;
-    double expected = 314;
+    double expected = 314.1592653589793;
     Circle circle = new Circle(side);
 
     // when

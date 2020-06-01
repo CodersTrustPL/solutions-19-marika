@@ -8,16 +8,15 @@ class SquareTest extends FigureTest {
 
   @Override
   public Figure getFigure() {
-    return new Square();
+    return new Square(10);
   }
 
   @Test
   void shouldCheckIfMethodReturnsCorrectValue() {
     // given
-    double length = 10;
     double width = 10;
     double expected = 100;
-    Square square = new Square(length, width);
+    Square square = new Square(width);
 
     // when
     double area = square.calculateArea();
