@@ -2,12 +2,12 @@ package pl.coderstrust.figures;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 import org.junit.jupiter.api.Test;
 
 public abstract class FigureTest {
 
   public abstract Figure getFigure();
+
   public abstract double getExpected();
 
   @Test
@@ -18,7 +18,7 @@ public abstract class FigureTest {
     // when
     double area = getFigure().calculateArea();
 
-    //then
+    // then
     assertEquals(area, expected);
   }
 }
