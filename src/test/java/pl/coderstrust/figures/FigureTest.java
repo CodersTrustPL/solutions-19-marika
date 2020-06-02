@@ -1,7 +1,6 @@
 package pl.coderstrust.figures;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,16 +8,17 @@ public abstract class FigureTest {
 
   public abstract Figure getFigure();
 
-  @Test
-  void shouldCheckIfMethodReturnsSomething() {
-    double area = getFigure().calculateArea();
-    assertNotNull(area);
-  }
+  public abstract double getExpected();
 
   @Test
-  void shouldCheckIfMethodNotReturnsZero() {
+  void shouldCheckIfMethodReturnsCorrectValue() {
+    // given
+    double expected = getExpected();
+
+    // when
     double area = getFigure().calculateArea();
-    double expected = 0;
-    assertNotSame(area, expected);
+
+    // then
+    assertEquals(area, expected);
   }
 }
