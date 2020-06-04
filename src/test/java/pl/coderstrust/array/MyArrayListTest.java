@@ -3,7 +3,6 @@ package pl.coderstrust.array;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -11,20 +10,20 @@ import org.junit.jupiter.api.Test;
 class MyArrayListTest {
 
   @Test
-  void shouldContainOneElementAfterAdding() {
+  void shouldCheckIfHaveCorrectSizeAfterAdding() {
     // given
-    int element = 1;
     List<Integer> list = new MyArrayList<>();
 
     // when
-    list.add(element);
+    list.add(1);
+    list.add(2);
 
     // then
     assertEquals(list.size(), 1);
   }
 
   @Test
-  void shouldHaveCorrectSizeAfterRemove() {
+  void shouldCheckIfHaveCorrectSizeAfterRemove() {
     // given
     List<Integer> list = new MyArrayList<>();
     list.add(1);
@@ -38,7 +37,7 @@ class MyArrayListTest {
   }
 
   @Test
-  void shouldContainsZeroElementsAfterClear() {
+  void shouldCheckIfHaveCorrectSizeAfterClear() {
     // given
     List<Integer> list = new MyArrayList<>();
     list.add(1);
@@ -48,17 +47,6 @@ class MyArrayListTest {
 
     // then
     assertEquals(list.size(), 0);
-  }
-
-  @Test
-  void shouldHaveCorrectSize() {
-    // given
-    List<Integer> list = new MyArrayList<>();
-    list.add(1);
-    list.add(2);
-
-    // then
-    assertEquals(list.size(), 2);
   }
 
   @Test
@@ -96,6 +84,18 @@ class MyArrayListTest {
   }
 
   @Test
+  void shouldReturnCorrectValueAfterLastIndexOf() {
+    // given
+    List<Integer> list = new MyArrayList<>();
+    list.add(1);
+    list.add(2);
+    list.add(1);
+
+    // then
+    assertEquals(list.lastIndexOf(1), 2);
+  }
+
+  @Test
   void shouldReturnCorrectSubList() {
     // given
     List<Integer> expected = new ArrayList<>();
@@ -110,5 +110,19 @@ class MyArrayListTest {
 
     // then
     assertEquals(list.subList(1, 3), expected);
+  }
+
+  @Test
+  void shouldCheckIfHaveCorrectSizeAfterSet() {
+    // given
+    List<Integer> list = new MyArrayList<>();
+    list.add(10);
+    list.add(15);
+
+    // when
+    list.set(1, 1);
+
+    // then
+    assertEquals(list.size(), 2);
   }
 }

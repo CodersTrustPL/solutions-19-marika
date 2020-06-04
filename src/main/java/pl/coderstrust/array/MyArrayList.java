@@ -72,6 +72,7 @@ public class MyArrayList<T> implements List<T> {
   @Override
   public void clear() {
     myArrayList = new Object[0];
+    size = 0;
   }
 
   @SuppressWarnings("unchecked")
@@ -134,32 +135,47 @@ public class MyArrayList<T> implements List<T> {
 
   @Override
   public T set(int i, T t) {
+    Object[] myArrayListSecond = new Object[myArrayList.length];
+    for (int j = 0; j < myArrayList.length; j++) {
+      if (j != i) {
+        myArrayListSecond[j] = myArrayList[j];
+      } else {
+        myArrayListSecond[j] = t;
+      }
+    }
+    myArrayList = myArrayListSecond;
     return null;
   }
 
   @Override
   public void add(int i, T t) {
-
-  }
-
-  @Override
-  public Iterator<T> iterator() {
-    return null;
-  }
-
-  @Override
-  public Object[] toArray() {
-    return new Object[0];
-  }
-
-  @Override
-  public <T1> T1[] toArray(T1[] t1s) {
-    return null;
+    Object[] myArrayListSecond = new Object[myArrayList.length + 1];
+    for (int j = 0; j < myArrayList.length; j++) {
+      if (j != i) {
+        myArrayListSecond[j] = myArrayList[j];
+      } else {
+        myArrayListSecond[j] = t;
+        break;
+      }
+    }
+    for (int j = i; j < myArrayList.length; j++) {
+      myArrayListSecond[j + 1] = myArrayList[j];
+    }
+    size ++;
+    myArrayList = myArrayListSecond;
   }
 
   @Override
   public boolean containsAll(Collection<?> collection) {
-    return false;
+    int isTrue = 0;
+    for (int i = 0; i < myArrayList.length; i++) {
+      for (int j = 0; j < collection.size() ; j++) {
+        if (myArrayList[i] == collection.toArray()[j]) {
+          isTrue ++;
+        }
+      }
+    }
+    return isTrue >= collection.size();
   }
 
   @Override
@@ -180,6 +196,21 @@ public class MyArrayList<T> implements List<T> {
   @Override
   public boolean retainAll(Collection<?> collection) {
     return false;
+  }
+
+  @Override
+  public Object[] toArray() {
+    return new Object[0];
+  }
+
+  @Override
+  public <T1> T1[] toArray(T1[] t1s) {
+    return null;
+  }
+
+  @Override
+  public Iterator<T> iterator() {
+    return null;
   }
 
   @Override
