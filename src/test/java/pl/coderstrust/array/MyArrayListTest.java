@@ -44,7 +44,6 @@ class MyArrayListTest {
     assertTrue(list.contains(1));
   }
 
-
   @Test
   void shouldReturnTrueIfContainsCollection() {
     // given
@@ -60,7 +59,7 @@ class MyArrayListTest {
   }
 
   @Test
-  void shouldCheckIfHaveCorrectSizeAfterAdding() { //check value too
+  void shouldCheckIfHaveCorrectSizeAfterAdding() {
     // given
     List<Integer> list = new MyArrayList<>();
 
@@ -73,7 +72,7 @@ class MyArrayListTest {
   }
 
   @Test
-  void shouldCheckIfHaveCorrectSizeAfterAddingAndIndex() { //check value too
+  void shouldCheckIfHaveCorrectSizeAfterAddingAndIndex() {
     // given
     List<Integer> list = new MyArrayList<>();
     list.add(1);
@@ -87,7 +86,7 @@ class MyArrayListTest {
   }
 
   @Test
-  void shouldCheckIfHaveCorrectSizeAfterAddingAll() { //check value too
+  void shouldCheckIfHaveCorrectSizeAfterAddingAll() {
     // given
     List<Integer> list = new MyArrayList<>();
     list.add(1);
@@ -104,7 +103,7 @@ class MyArrayListTest {
   }
 
   @Test
-  void shouldCheckIfHaveCorrectSizeAfterAddingAllAndIndex() { //check value too
+  void shouldCheckIfHaveCorrectSizeAfterAddingAllAndIndex() {
     // given
     List<Integer> list = new MyArrayList<>();
     list.add(1);
@@ -121,7 +120,7 @@ class MyArrayListTest {
   }
 
   @Test
-  void shouldCheckIfHaveCorrectSizeAfterRemove() { // too
+  void shouldCheckIfHaveCorrectSizeAfterRemove() {
     // given
     List<Integer> list = new MyArrayList<>();
     list.add(1);

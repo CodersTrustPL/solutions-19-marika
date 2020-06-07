@@ -24,11 +24,26 @@ public class MyArrayList<T> implements List<T> {
   @Override
   public boolean contains(Object o) {
     for (Object value : myArrayList) {
-      if(value == o) {
+      if (value == o) {
         return true;
       }
     }
     return false;
+  }
+
+  @Override
+  public Iterator<T> iterator() {
+    return null;
+  }
+
+  @Override
+  public Object[] toArray() {
+    return new Object[0];
+  }
+
+  @Override
+  public <T1> T1[] toArray(T1[] t1s) {
+    return null;
   }
 
   @Override
@@ -41,9 +56,27 @@ public class MyArrayList<T> implements List<T> {
       myArrayList = myArrayListSecond;
     } else {
       myArrayList[size] = t;
-      size ++;
+      size++;
     }
     return true;
+  }
+
+  @Override
+  public void add(int i, T t) {
+    Object[] myArrayListSecond = new Object[myArrayList.length + 1];
+    for (int j = 0; j < myArrayList.length; j++) {
+      if (j != i) {
+        myArrayListSecond[j] = myArrayList[j];
+      } else {
+        myArrayListSecond[j] = t;
+        break;
+      }
+    }
+    if (myArrayList.length - i >= 0) {
+      System.arraycopy(myArrayList, i, myArrayListSecond, i + 1, myArrayList.length - i);
+    }
+    size++;
+    myArrayList = myArrayListSecond;
   }
 
   @Override
@@ -67,18 +100,6 @@ public class MyArrayList<T> implements List<T> {
     return true;
   }
 
-  @Override
-  public void clear() {
-    myArrayList = new Object[0];
-    size = 0;
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public T get(int i) {
-    return (T)myArrayList[i];
-  }
-
   @SuppressWarnings("unchecked")
   @Override
   public T remove(int i) {
@@ -94,71 +115,6 @@ public class MyArrayList<T> implements List<T> {
     myArrayList = myArrayListSecond;
     size--;
     return (T) myArrayList;
-  }
-
-  @Override
-  public int indexOf(Object o) {
-    int index = 1;
-    for (int i = 0; i < myArrayList.length; i++) {
-      if(myArrayList[i] == o) {
-        index = i;
-        break;
-      }
-    }
-    return index;
-  }
-
-  @Override
-  public int lastIndexOf(Object o) {
-    int index = 1;
-    for (int i = 0; i < myArrayList.length; i++) {
-      if(myArrayList[i] == o) {
-        index = i;
-      }
-    }
-    return index;
-  }
-
-  @SuppressWarnings("unchecked")
-  @Override
-  public List<T> subList(int i, int i1) {
-    List<T> myArrayListSecond = new ArrayList<>();
-    int counter = 0;
-    for (int j = i; j < i1; j++) {
-      myArrayListSecond.add((T) myArrayList[j]);
-      counter++;
-    }
-    return myArrayListSecond;
-  }
-
-  @Override
-  public T set(int i, T t) {
-    Object[] myArrayListSecond = new Object[myArrayList.length];
-    for (int j = 0; j < myArrayList.length; j++) {
-      if (j != i) {
-        myArrayListSecond[j] = myArrayList[j];
-      } else {
-        myArrayListSecond[j] = t;
-      }
-    }
-    myArrayList = myArrayListSecond;
-    return null;
-  }
-
-  @Override
-  public void add(int i, T t) {
-    Object[] myArrayListSecond = new Object[myArrayList.length + 1];
-    for (int j = 0; j < myArrayList.length; j++) {
-      if (j != i) {
-        myArrayListSecond[j] = myArrayList[j];
-      } else {
-        myArrayListSecond[j] = t;
-        break;
-      }
-    }
-    if (myArrayList.length - i >= 0) System.arraycopy(myArrayList, i, myArrayListSecond, i + 1, myArrayList.length - i);
-    size ++;
-    myArrayList = myArrayListSecond;
   }
 
   @Override
@@ -183,7 +139,7 @@ public class MyArrayList<T> implements List<T> {
       myArrayListSecond[i] = myArrayList[i];
       counter++;
     }
-    for ( T element : collection) {
+    for (T element : collection) {
       myArrayListSecond[counter] = element;
       counter++;
     }
@@ -205,7 +161,7 @@ public class MyArrayList<T> implements List<T> {
     int indexCounter = i;
     for (T element: collection) {
       myArrayListSecond[indexCounter] = element;
-      indexCounter ++;
+      indexCounter++;
     }
     for (int j = i; j < myArrayList.length; j++) {
       myArrayListSecond[indexCounter] = myArrayList[j];
@@ -254,18 +210,52 @@ public class MyArrayList<T> implements List<T> {
   }
 
   @Override
-  public Object[] toArray() {
-    return new Object[0];
+  public void clear() {
+    myArrayList = new Object[0];
+    size = 0;
+  }
+
+  @SuppressWarnings("unchecked")
+  @Override
+  public T get(int i) {
+    return (T) myArrayList[i];
   }
 
   @Override
-  public <T1> T1[] toArray(T1[] t1s) {
+  public T set(int i, T t) {
+    Object[] myArrayListSecond = new Object[myArrayList.length];
+    for (int j = 0; j < myArrayList.length; j++) {
+      if (j != i) {
+        myArrayListSecond[j] = myArrayList[j];
+      } else {
+        myArrayListSecond[j] = t;
+      }
+    }
+    myArrayList = myArrayListSecond;
     return null;
   }
 
   @Override
-  public Iterator<T> iterator() {
-    return null;
+  public int indexOf(Object o) {
+    int index = 1;
+    for (int i = 0; i < myArrayList.length; i++) {
+      if (myArrayList[i] == o) {
+        index = i;
+        break;
+      }
+    }
+    return index;
+  }
+
+  @Override
+  public int lastIndexOf(Object o) {
+    int index = 1;
+    for (int i = 0; i < myArrayList.length; i++) {
+      if (myArrayList[i] == o) {
+        index = i;
+      }
+    }
+    return index;
   }
 
   @Override
@@ -276,5 +266,17 @@ public class MyArrayList<T> implements List<T> {
   @Override
   public ListIterator<T> listIterator(int i) {
     return null;
+  }
+
+  @SuppressWarnings("unchecked")
+  @Override
+  public List<T> subList(int i, int i1) {
+    List<T> myArrayListSecond = new ArrayList<>();
+    int counter = 0;
+    for (int j = i; j < i1; j++) {
+      myArrayListSecond.add((T) myArrayList[j]);
+      counter++;
+    }
+    return myArrayListSecond;
   }
 }
