@@ -1,6 +1,7 @@
 package pl.coderstrust.array;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class MyArrayListTest {
 
   @Test
-  void shouldCheckIfHaveCorrectSizeAfterAdding() {
+  void shouldCheckIfReturnCorrectSize() {
     // given
     List<Integer> list = new MyArrayList<>();
 
@@ -19,11 +20,107 @@ class MyArrayListTest {
     list.add(2);
 
     // then
-    assertEquals(list.size(), 1);
+    assertEquals(list.size(), 2);
   }
 
   @Test
-  void shouldCheckIfHaveCorrectSizeAfterRemove() {
+  void shouldCheckIfReturnTrueIfIsEmpty() {
+    // given
+    List<Integer> list = new MyArrayList<>();
+    list.add(1);
+
+    // then
+    assertFalse(list.isEmpty());
+  }
+
+  @Test
+  void shouldReturnTrueIfContainsValue() {
+    // given
+    List<Integer> list = new MyArrayList<>();
+    list.add(1);
+    list.add(2);
+
+    // then
+    assertTrue(list.contains(1));
+  }
+
+  @Test
+  void shouldReturnTrueIfContainsCollection() {
+    // given
+    List<Integer> list = new MyArrayList<>();
+    list.add(1);
+    list.add(2);
+    List<Integer> listTwo = new ArrayList<>();
+    list.add(1);
+    list.add(2);
+
+    // then
+    assertTrue(list.containsAll(listTwo));
+  }
+
+  @Test
+  void shouldCheckIfHaveCorrectSizeAfterAdding() { //check value too
+    // given
+    List<Integer> list = new MyArrayList<>();
+
+    // when
+    list.add(1);
+    list.add(2);
+
+    // then
+    assertEquals(list.size(), 2);
+  }
+
+  @Test
+  void shouldCheckIfHaveCorrectSizeAfterAddingAndIndex() { //check value too
+    // given
+    List<Integer> list = new MyArrayList<>();
+    list.add(1);
+    list.add(2);
+
+    // when
+    list.add(1, 33);
+
+    // then
+    assertEquals(list.size(), 3);
+  }
+
+  @Test
+  void shouldCheckIfHaveCorrectSizeAfterAddingAll() { //check value too
+    // given
+    List<Integer> list = new MyArrayList<>();
+    list.add(1);
+    list.add(2);
+    List<Integer> listTwo = new ArrayList<>();
+    list.add(11);
+    list.add(12);
+
+    // when
+    list.addAll(listTwo);
+
+    // then
+    assertEquals(list.size(), 4);
+  }
+
+  @Test
+  void shouldCheckIfHaveCorrectSizeAfterAddingAllAndIndex() { //check value too
+    // given
+    List<Integer> list = new MyArrayList<>();
+    list.add(1);
+    list.add(2);
+    List<Integer> listTwo = new ArrayList<>();
+    listTwo.add(11);
+    listTwo.add(12);
+
+    // when
+    list.addAll(1, listTwo);
+
+    // then
+    assertEquals(list.size(), 4);
+  }
+
+  @Test
+  void shouldCheckIfHaveCorrectSizeAfterRemove() { // too
     // given
     List<Integer> list = new MyArrayList<>();
     list.add(1);
@@ -31,6 +128,24 @@ class MyArrayListTest {
 
     // when
     list.remove(1);
+
+    // then
+    assertEquals(list.size(), 1);
+  }
+
+  @Test
+  void shouldCheckIfHaveCorrectSizeAfterRemoveAll() { // too
+    // given
+    List<Integer> list = new MyArrayList<>();
+    list.add(1);
+    list.add(2);
+    list.add(3);
+    List<Integer> listTwo = new ArrayList<>();
+    listTwo.add(1);
+    listTwo.add(2);
+
+    // when
+    list.removeAll(listTwo);
 
     // then
     assertEquals(list.size(), 1);
@@ -59,17 +174,6 @@ class MyArrayListTest {
 
     // then
     assertEquals(list.get(1), 1);
-  }
-
-  @Test
-  void shouldReturnTrueIfContainsValue() {
-    // given
-    List<Integer> list = new MyArrayList<>();
-    list.add(1);
-    list.add(2);
-
-    // then
-    assertTrue(list.contains(1));
   }
 
   @Test

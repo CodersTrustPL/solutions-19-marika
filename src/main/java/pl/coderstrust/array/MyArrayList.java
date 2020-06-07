@@ -180,22 +180,80 @@ public class MyArrayList<T> implements List<T> {
 
   @Override
   public boolean addAll(Collection<? extends T> collection) {
+    Object[] myArrayListSecond = new Object[myArrayList.length + collection.size()];
+    size += collection.size();
+    int counter = 0;
+    for (int i = 0; i < myArrayList.length; i++) {
+      myArrayListSecond[i] = myArrayList[i];
+      counter++;
+    }
+    for ( T element : collection) {
+      myArrayListSecond[counter] = element;
+      counter++;
+    }
+    myArrayList = myArrayListSecond;
     return true;
   }
 
   @Override
   public boolean addAll(int i, Collection<? extends T> collection) {
+    Object[] myArrayListSecond = new Object[myArrayList.length + collection.size()];
+    size += collection.size();
+    for (int j = 0; j < myArrayList.length; j++) {
+      if (j != i) {
+        myArrayListSecond[j] = myArrayList[j];
+      } else {
+        break;
+      }
+    }
+    int indexCounter = i;
+    for (T element: collection) {
+      myArrayListSecond[indexCounter] = element;
+      indexCounter ++;
+    }
+    for (int j = i; j < myArrayList.length; j++) {
+      myArrayListSecond[indexCounter] = myArrayList[j];
+      indexCounter++;
+    }
+    myArrayList = myArrayListSecond;
     return false;
   }
 
   @Override
   public boolean removeAll(Collection<?> collection) {
+    for (int i = 0; i < myArrayList.length; i++) {
+      for (Object item : collection) {
+        if (myArrayList[i] == item) {
+          myArrayList[i] = null;
+        }
+      }
+    }
+    for (Object el : myArrayList) {
+      System.out.println(el);
+    }
+    Object[] myArrayListSecond = new Object[myArrayList.length - collection.size()];
+    int index = 0;
+    for (Object o : myArrayList) {
+      if (o != null) {
+        myArrayListSecond[index] = o;
+        index++;
+      }
+    }
+    myArrayList = myArrayListSecond;
+    size -= collection.size();
     return false;
   }
 
   @Override
   public boolean retainAll(Collection<?> collection) {
-    return false;
+    for (Object element: collection) {
+      for (Object item: myArrayList) {
+        if (element == item) {
+          collection.remove(item);
+        }
+      }
+    }
+    return true;
   }
 
   @Override
