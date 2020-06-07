@@ -36,9 +36,7 @@ public class MyArrayList<T> implements List<T> {
     if (size == myArrayList.length) {
       Object[] myArrayListSecond = new Object[myArrayList.length + 1];
       size++;
-      for (int i = 0; i < myArrayList.length; i++) {
-        myArrayListSecond[i] = myArrayList[i];
-      }
+      System.arraycopy(myArrayList, 0, myArrayListSecond, 0, myArrayList.length);
       myArrayListSecond[myArrayListSecond.length - 1] = t;
       myArrayList = myArrayListSecond;
     } else {
@@ -58,9 +56,9 @@ public class MyArrayList<T> implements List<T> {
     }
     Object[] myArrayListSecond = new Object[myArrayList.length - 1];
     int index = 0;
-    for (int i = 0; i < myArrayList.length; i++) {
-      if (myArrayList[i] != null) {
-        myArrayListSecond[index] = myArrayList[i];
+    for (Object value : myArrayList) {
+      if (value != null) {
+        myArrayListSecond[index] = value;
         index++;
       }
     }
@@ -87,8 +85,8 @@ public class MyArrayList<T> implements List<T> {
     myArrayList[i] = null;
     Object[] myArrayListSecond = new Object[myArrayList.length - 1];
     int index = 0;
-    for (int j = 0; j < myArrayList.length; j++) {
-      if (myArrayList[j] != null) {
+    for (Object o : myArrayList) {
+      if (o != null) {
         myArrayListSecond[index] = myArrayList[i];
         index++;
       }
@@ -158,9 +156,7 @@ public class MyArrayList<T> implements List<T> {
         break;
       }
     }
-    for (int j = i; j < myArrayList.length; j++) {
-      myArrayListSecond[j + 1] = myArrayList[j];
-    }
+    if (myArrayList.length - i >= 0) System.arraycopy(myArrayList, i, myArrayListSecond, i + 1, myArrayList.length - i);
     size ++;
     myArrayList = myArrayListSecond;
   }
@@ -168,10 +164,10 @@ public class MyArrayList<T> implements List<T> {
   @Override
   public boolean containsAll(Collection<?> collection) {
     int isTrue = 0;
-    for (int i = 0; i < myArrayList.length; i++) {
-      for (int j = 0; j < collection.size() ; j++) {
-        if (myArrayList[i] == collection.toArray()[j]) {
-          isTrue ++;
+    for (Object o : myArrayList) {
+      for (int j = 0; j < collection.size(); j++) {
+        if (o == collection.toArray()[j]) {
+          isTrue++;
         }
       }
     }
@@ -225,6 +221,7 @@ public class MyArrayList<T> implements List<T> {
       for (Object item : collection) {
         if (myArrayList[i] == item) {
           myArrayList[i] = null;
+          break;
         }
       }
     }

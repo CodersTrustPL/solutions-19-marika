@@ -1,5 +1,7 @@
 package pl.coderstrust.array;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Main {
@@ -13,11 +15,12 @@ public class Main {
 
     System.out.println("size: " + myList.size());
 
+
     for (int i = 0; i < myList.size(); i++) {
       System.out.println(myList.get(i));
     }
 
-    List<String> myList1 = new MyArrayList<>();
+    List<String> myList1 = new ArrayList<>();
 
     System.out.println(myList1.add("ABCABC"));
     System.out.println(myList1.add("CBDCBD"));
@@ -31,7 +34,6 @@ public class Main {
       System.out.println(myList1.get(i));
     }
 
-    /*
     System.out.println(myList.remove("CBD"));
 
     System.out.println("contains false: " + myList.contains("ABS"));
@@ -110,15 +112,11 @@ public class Main {
 
     System.out.println(myList.size());
 
-    /*
     myList.removeAll(ms);
 
     for (int i = 0; i < myList.size() ; i++) {
       System.out.println( "$ " + myList.get(i));
     }
-
-     */
-
   }
 
 }

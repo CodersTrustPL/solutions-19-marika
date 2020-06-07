@@ -44,6 +44,7 @@ class MyArrayListTest {
     assertTrue(list.contains(1));
   }
 
+
   @Test
   void shouldReturnTrueIfContainsCollection() {
     // given
@@ -51,8 +52,8 @@ class MyArrayListTest {
     list.add(1);
     list.add(2);
     List<Integer> listTwo = new ArrayList<>();
-    list.add(1);
-    list.add(2);
+    listTwo.add(1);
+    listTwo.add(2);
 
     // then
     assertTrue(list.containsAll(listTwo));
@@ -92,8 +93,8 @@ class MyArrayListTest {
     list.add(1);
     list.add(2);
     List<Integer> listTwo = new ArrayList<>();
-    list.add(11);
-    list.add(12);
+    listTwo.add(11);
+    listTwo.add(12);
 
     // when
     list.addAll(listTwo);
